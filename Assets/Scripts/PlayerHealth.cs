@@ -27,6 +27,8 @@ public class PlayerHealth : MonoBehaviour {
         player = GameObject.Find("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
         speed = playerMovement.speed;
+        health_image.sprite = sprite_health[health];
+        shield_image.sprite = sprite_shield[shield];
     }
     private void Awake()
     {
@@ -48,6 +50,7 @@ public class PlayerHealth : MonoBehaviour {
                 playerMovement.speed = speed;
                 invulnerable = false;
                 health = 3;
+                health_image.sprite = sprite_health[health];
                 gameOver = false;
             }
         }
@@ -87,12 +90,12 @@ public class PlayerHealth : MonoBehaviour {
             if (shield > 0)
             {
                 shield--;
-           //     shield_image.sprite = sprite_shield[shield];
+                shield_image.sprite = sprite_shield[shield];
             }
             else
             {
                 health--;
-                //      health_image.sprite = sprite_health[health];
+                health_image.sprite = sprite_health[health];
             }
             invulnerable = true;
             if (health <= 0)
