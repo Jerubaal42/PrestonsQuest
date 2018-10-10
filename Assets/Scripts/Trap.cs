@@ -15,9 +15,12 @@ public class Trap : MonoBehaviour {
 	}
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject enemy = GameObject.Find(collision.gameObject.name);
-        EnemyChase script = enemy.GetComponent<EnemyChase>();
-        script.immobile = true;
-        Destroy(gameObject);
+        if (collision.gameObject.tag == "Enemy")
+        {
+            GameObject enemy = GameObject.Find(collision.gameObject.name);
+            EnemyChase script = enemy.GetComponent<EnemyChase>();
+            script.immobile = true;
+            Destroy(gameObject);
+        }
     }
 }

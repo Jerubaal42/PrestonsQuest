@@ -20,8 +20,8 @@ public class PlayerHealth : MonoBehaviour {
     public float time2 = 0;
     private float speed;
     private static bool created = false;
-    GameObject player;
-    PlayerMovement playerMovement;
+    private GameObject player;
+    private PlayerMovement playerMovement;
 	// Use this for initialization
 	void Start () {
         player = GameObject.Find("Player");

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyChase : MonoBehaviour {
     public GameObject player;
+    private GameObject distraction;
     public float chaseSpeed = 1.0f;
     public float chaseTriggerDistance = 10f;
     public float paceSpeed = 0.5f;
@@ -71,11 +72,10 @@ public class EnemyChase : MonoBehaviour {
                 immobile = false;
             }
         }
-        Vector3 playerPosition = player.transform.position;
-        Vector2 chaseDirection = new Vector2(playerPosition.x - transform.position.x, playerPosition.y - transform.position.y);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position,chaseDirection,10f);
-        if (hit.collider.name == "Player")
-        {
+        distraction = GameObject.FindWithTag("Distraction");
+        if (distraction != null) {
+            Vector3 distractionPosition = distraction.transform.position;
+            Vector2 chaseDirection = new Vector2(distractionPosition.x - transform.position.x, distractionPosition.y - transform.position.y);
             chaseDirection.Normalize();
             GetComponent<Rigidbody2D>().velocity = chaseDirection * chaseSpeed;
             if (Mathf.Abs(chaseDirection.y) < Mathf.Abs(chaseDirection.x))
@@ -88,31 +88,53 @@ public class EnemyChase : MonoBehaviour {
                 if (chaseDirection.y > 0) { animator.SetTrigger("MoveUp"); }
                 if (chaseDirection.y < 0) { animator.SetTrigger("MoveDown"); }
             }
-        } else
+        }
+        else
         {
-            Vector2 destDirection = new Vector2(destination.x - transform.position.x, destination.y - transform.position.y);
-            if(destDirection.magnitude < 0.3f)
+            Vector3 playerPosition = player.transform.position;
+            Vector2 chaseDirection = new Vector2(playerPosition.x - transform.position.x, playerPosition.y - transform.position.y);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, chaseDirection, 10f);
+            if (hit.collider.name == "Player")
             {
-                destArrive = true;
-                paceSpeed = 0f;
-                currentWaypoint++;
-                if (currentWaypoint > waypointMax)
+                chaseDirection.Normalize();
+                GetComponent<Rigidbody2D>().velocity = chaseDirection * chaseSpeed;
+                if (Mathf.Abs(chaseDirection.y) < Mathf.Abs(chaseDirection.x))
                 {
-                    currentWaypoint = 0;
+                    if (chaseDirection.x > 0) { animator.SetTrigger("MoveRight"); }
+                    if (chaseDirection.x < 0) { animator.SetTrigger("MoveLeft"); }
                 }
-                destination = new Vector2(x_waypoint[currentWaypoint], y_waypoint[currentWaypoint]);
-            }
-            destDirection.Normalize();
-            GetComponent<Rigidbody2D>().velocity = destDirection * paceSpeed;
-            if (Mathf.Abs(destDirection.y) < Mathf.Abs(destDirection.x))
-            {
-                if (destDirection.x > 0) { animator.SetTrigger("MoveRight"); }
-                if (destDirection.x < 0) { animator.SetTrigger("MoveLeft"); }
+                else
+                {
+                    if (chaseDirection.y > 0) { animator.SetTrigger("MoveUp"); }
+                    if (chaseDirection.y < 0) { animator.SetTrigger("MoveDown"); }
+                }
             }
             else
             {
+                Vector2 destDirection = new Vector2(destination.x - transform.position.x, destination.y - transform.position.y);
+                if (destDirection.magnitude < 0.3f)
+                {
+                    destArrive = true;
+                    paceSpeed = 0f;
+                    currentWaypoint++;
+                    if (currentWaypoint > waypointMax)
+                    {
+                        currentWaypoint = 0;
+                    }
+                    destination = new Vector2(x_waypoint[currentWaypoint], y_waypoint[currentWaypoint]);
+                }
+                destDirection.Normalize();
+                GetComponent<Rigidbody2D>().velocity = destDirection * paceSpeed;
+                if (Mathf.Abs(destDirection.y) < Mathf.Abs(destDirection.x))
+                {
+                    if (destDirection.x > 0) { animator.SetTrigger("MoveRight"); }
+                    if (destDirection.x < 0) { animator.SetTrigger("MoveLeft"); }
+                }
+                else
+                {
                     if (destDirection.y > 0) { animator.SetTrigger("MoveUp"); }
-                if (destDirection.y < 0) { animator.SetTrigger("MoveDown"); }
+                    if (destDirection.y < 0) { animator.SetTrigger("MoveDown"); }
+                }
             }
         }
     }
