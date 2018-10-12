@@ -14,8 +14,6 @@ public class EnemyChase : MonoBehaviour {
     private Vector2 destination;
     private int waypointMax;
     private int currentWaypoint = 0;
-    public Vector3 paceDirection = new Vector3(0f, 0f, 0f);
-    public float paceDistance = 2.0f;
     private float time;
     private float time2;
     private float time3;
@@ -94,8 +92,8 @@ public class EnemyChase : MonoBehaviour {
         {
             Vector3 playerPosition = player.transform.position;
             Vector2 chaseDirection = new Vector2(playerPosition.x - transform.position.x, playerPosition.y - transform.position.y);
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, chaseDirection, 10f);
-            if (hit.collider.name == "Player")
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, chaseDirection, chaseTriggerDistance);
+            if (hit && hit.collider.name == "Player")
             {
                 chaseDirection.Normalize();
                 GetComponent<Rigidbody2D>().velocity = chaseDirection * chaseSpeed;
