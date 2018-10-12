@@ -25,7 +25,7 @@ public class EnemyChase : MonoBehaviour {
     public float pauseTime = 1.0f;
     public float[] x_waypoint;
     public float[] y_waypoint;
-    //waypointPause is for the waypoint BEFORE
+    //waypointPause is pause time for waypoint BEFORE listed point
     public float[] waypointPause;
     private bool destArrive = false;
 	// Use this for initialization
@@ -78,7 +78,8 @@ public class EnemyChase : MonoBehaviour {
             Vector2 chaseDirection = new Vector2(distractionPosition.x - transform.position.x, distractionPosition.y - transform.position.y);
             chaseDirection.Normalize();
             GetComponent<Rigidbody2D>().velocity = chaseDirection * chaseSpeed;
-            if (Mathf.Abs(chaseDirection.y) < Mathf.Abs(chaseDirection.x))
+            if (chaseSpeed == 0) { animator.SetTrigger("MoveNone"); }
+            else if (Mathf.Abs(chaseDirection.y) < Mathf.Abs(chaseDirection.x))
             {
                 if (chaseDirection.x > 0) { animator.SetTrigger("MoveRight"); }
                 if (chaseDirection.x < 0) { animator.SetTrigger("MoveLeft"); }
@@ -98,7 +99,8 @@ public class EnemyChase : MonoBehaviour {
             {
                 chaseDirection.Normalize();
                 GetComponent<Rigidbody2D>().velocity = chaseDirection * chaseSpeed;
-                if (Mathf.Abs(chaseDirection.y) < Mathf.Abs(chaseDirection.x))
+                if (chaseSpeed == 0) { animator.SetTrigger("MoveNone"); }
+                else if (Mathf.Abs(chaseDirection.y) < Mathf.Abs(chaseDirection.x))
                 {
                     if (chaseDirection.x > 0) { animator.SetTrigger("MoveRight"); }
                     if (chaseDirection.x < 0) { animator.SetTrigger("MoveLeft"); }
@@ -125,7 +127,8 @@ public class EnemyChase : MonoBehaviour {
                 }
                 destDirection.Normalize();
                 GetComponent<Rigidbody2D>().velocity = destDirection * paceSpeed;
-                if (Mathf.Abs(destDirection.y) < Mathf.Abs(destDirection.x))
+                if (paceSpeed == 0) { animator.SetTrigger("MoveNone"); }
+                else if (Mathf.Abs(destDirection.y) < Mathf.Abs(destDirection.x))
                 {
                     if (destDirection.x > 0) { animator.SetTrigger("MoveRight"); }
                     if (destDirection.x < 0) { animator.SetTrigger("MoveLeft"); }
@@ -143,7 +146,7 @@ public class EnemyChase : MonoBehaviour {
         if(collision.gameObject.tag == "Player")
         {
             hitPlayer = true;
-            chaseSpeed = chaseSpeed * 0.1f;
+            chaseSpeed = 0;
         }
     }
 }
