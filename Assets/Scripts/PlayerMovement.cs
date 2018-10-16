@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour {
             if (y > 0) { animator.SetTrigger("MoveUp"); }
             if (y < 0) { animator.SetTrigger("MoveDown"); }
         }
-        if (x == 0 && y == 0) { animator.SetTrigger("MoveNone"); }
+       // if (x == 0 && y == 0) { animator.SetTrigger("MoveNone"); }
         Vector2 velocity = new Vector2(x, y);
         GetComponent<Rigidbody2D>().velocity = velocity * speed;
     }

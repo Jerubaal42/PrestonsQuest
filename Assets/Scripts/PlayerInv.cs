@@ -95,18 +95,4 @@ public class PlayerInv : MonoBehaviour {
             }
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Collect")
-        {
-            inventory[Random.Range(0, 4)]++;
-            Destroy(collision.gameObject);
-            front_text.text = inventory[front_number].ToString();
-            if (inventory[front_number] <= 0) { front_image.GetComponent<Image>().color = new Color32(128, 128, 128, 255); } else { front_image.GetComponent<Image>().color = new Color32(255, 255, 255, 255); }
-            left_text.text = inventory[left_number].ToString();
-            if (inventory[left_number] <= 0) { left_image.GetComponent<Image>().color = new Color32(128, 128, 128, 128); } else { left_image.GetComponent<Image>().color = new Color32(255, 255, 255, 128); }
-            right_text.text = inventory[right_number].ToString();
-            if (inventory[right_number] <= 0) { right_image.GetComponent<Image>().color = new Color32(128, 128, 128, 128); } else { right_image.GetComponent<Image>().color = new Color32(255, 255, 255, 128); }
-        }
-    }
 }

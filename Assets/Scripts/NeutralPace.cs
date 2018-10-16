@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,10 +11,13 @@ public class NeutralPace : MonoBehaviour
     private Vector2 destination;
     private int waypointMax;
     private int currentWaypoint = 0;
+    public Vector3 paceDirection = new Vector3(0f, 0f, 0f);
+    public float paceDistance = 2.0f;
     private float time2;
     private float time3;
     public bool immobile = false;
     public float trapTime = 5.0f;
+    public float pauseTime = 1.0f;
     public float[] x_waypoint;
     public float[] y_waypoint;
     //waypointPause is pause time for waypoint BEFORE listed point
