@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f65b26d0a92274f8732f2fd77f09ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1340935014659916, guid: df06af517cc6db742943d69f4e46385f, type: 2}
   chaseSpeed: 1
   chaseTriggerDistance: 10
   paceSpeed: 0.5

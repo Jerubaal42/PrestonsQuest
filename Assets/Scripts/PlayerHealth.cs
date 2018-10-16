@@ -7,14 +7,17 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour {
     public int health = 3;
     public int shield = 0;
+    public int cshield = 0;
     private bool invulnerable = false;
     private float time = 0;
     private float flashTimer = 0;
     public float invulnerableTime = 1;
     public Sprite[] sprite_health;
     public Sprite[] sprite_shield;
+    public Sprite[] sprite_cshield;
     public Image health_image;
     public Image shield_image;
+    public Image cshield_image;
     private bool gameOver = false;
     public float gameOverTime = 3;
     public float time2 = 0;
@@ -29,6 +32,7 @@ public class PlayerHealth : MonoBehaviour {
         speed = playerMovement.speed;
         health_image.sprite = sprite_health[health];
         shield_image.sprite = sprite_shield[shield];
+        cshield_image.sprite = sprite_cshield[cshield];
     }
     private void Awake()
     {
@@ -62,7 +66,7 @@ public class PlayerHealth : MonoBehaviour {
                 Vector4 color = gameObject.GetComponent<SpriteRenderer>().color;
                 color.w = 0.8f;
                 gameObject.GetComponent<SpriteRenderer>().color = color;
-            } else if (flashTimer>0.1f && flashTimer < 02f)
+            } else if (flashTimer>0.1f && flashTimer < 0.2f)
             {
                 Vector4 color = gameObject.GetComponent<SpriteRenderer>().color;
                 color.w = 1f;
@@ -87,7 +91,12 @@ public class PlayerHealth : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Enemy" && invulnerable == false)
         {
-            if (shield > 0)
+            if (cshield > 0)
+            {
+                cshield--;
+                cshield_image.sprite = sprite_cshield[cshield];
+            }
+            else if (shield > 0)
             {
                 shield--;
                 shield_image.sprite = sprite_shield[shield];

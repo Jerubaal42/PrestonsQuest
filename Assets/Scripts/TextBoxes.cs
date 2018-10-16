@@ -5,12 +5,18 @@ using UnityEngine.UI;
 
 public class TextBoxes : MonoBehaviour
 {
-    public GameObject player;
     public Canvas FlyingBirds;
+    public Canvas PotSelect;
+    private bool talkedToo = false;
+    private PauseMenu pause;
+    private GameObject player;
+    private PlayerKey playerKey;
     // Use this for initialization
     void Start()
     {
-
+        player = GameObject.Find("Player");
+        pause = player.GetComponent<PauseMenu>();
+        playerKey = player.GetComponent<PlayerKey>();
     }
 
     // Update is called once per frame
@@ -21,18 +27,39 @@ public class TextBoxes : MonoBehaviour
 
     void OnMouseDown()
     {
-            
-        if(Time.timeScale == 0 && FlyingBirds.enabled == true)
+        if(FlyingBirds.enabled == true)
         {
-            Time.timeScale = 1;
+            if (pause.paused == false) { Time.timeScale = 1; }
             FlyingBirds.enabled = false;
+            if (talkedToo == false) { PotSelect.enabled = false; }
         }
         else
         {
-
-            Time.timeScale = 0;
+            if (pause.paused == false) { Time.timeScale = 0; }
             FlyingBirds.enabled = true;
+            if (talkedToo == false) { PotSelect.enabled = true; }
         }
-            
+    }
+
+    public void WhitePot() {
+        playerKey.bottle = 1; talkedToo = true;
+        PotSelect.enabled = false;
+        playerKey.potion.sprite = playerKey.potion_sprite[playerKey.bottle];
+        if (pause.paused == false) { Time.timeScale = 1; }
+        FlyingBirds.enabled = false;
+    }
+    public void RedPot() {
+        playerKey.bottle = 2;
+        talkedToo = true; PotSelect.enabled = false;
+        playerKey.potion.sprite = playerKey.potion_sprite[playerKey.bottle];
+        if (pause.paused == false) { Time.timeScale = 1; }
+        FlyingBirds.enabled = false;
+    }
+    public void GreenPot() {
+        playerKey.bottle = 3;
+        talkedToo = true; PotSelect.enabled = false;
+        playerKey.potion.sprite = playerKey.potion_sprite[playerKey.bottle];
+        if (pause.paused == false) { Time.timeScale = 1; }
+        FlyingBirds.enabled = false;
     }
 }

@@ -88,6 +88,7 @@ public class EnemyChase : MonoBehaviour {
                 if (chaseDirection.y > 0) { animator.SetTrigger("MoveUp"); }
                 if (chaseDirection.y < 0) { animator.SetTrigger("MoveDown"); }
             }
+            if (chaseSpeed==0) { animator.SetTrigger("MoveNone"); }
         }
         else
         {
@@ -108,6 +109,7 @@ public class EnemyChase : MonoBehaviour {
                     if (chaseDirection.y > 0) { animator.SetTrigger("MoveUp"); }
                     if (chaseDirection.y < 0) { animator.SetTrigger("MoveDown"); }
                 }
+                if (chaseSpeed == 0) { animator.SetTrigger("MoveNone"); }
             }
             else
             {
@@ -135,6 +137,7 @@ public class EnemyChase : MonoBehaviour {
                     if (destDirection.y > 0) { animator.SetTrigger("MoveUp"); }
                     if (destDirection.y < 0) { animator.SetTrigger("MoveDown"); }
                 }
+                if (paceSpeed==0) { animator.SetTrigger("MoveNone"); }
             }
         }
     }
