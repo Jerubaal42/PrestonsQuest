@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyChase : MonoBehaviour {
-    public GameObject player;
+    private GameObject player;
     private GameObject distraction;
     public float chaseSpeed = 1.0f;
     public float chaseTriggerDistance = 10f;
@@ -35,6 +35,7 @@ public class EnemyChase : MonoBehaviour {
         waypointMax = x_waypoint.Length - 1;
         speed = chaseSpeed;
         pspeed = paceSpeed;
+        player = GameObject.FindWithTag("Player");
 	}
 	
 	// Update is called once per frame

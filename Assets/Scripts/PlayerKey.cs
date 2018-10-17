@@ -14,6 +14,7 @@ public class PlayerKey : MonoBehaviour {
     public bool l_orb = false;
     public Image[] images;
     public Sprite[] sprites;
+    public Sprite blank;
     public Image potion;
     public Sprite[] potion_sprite;
     private GameObject player;

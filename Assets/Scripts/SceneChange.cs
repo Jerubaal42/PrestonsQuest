@@ -5,10 +5,13 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour {
-   // private GameObject player;
-   // private PlayerMovement playerMovement;
+    private GameObject player;
+    // private PlayerMovement playerMovement;
+    private PlayerKey playerKey;
+    private GameObject EndSquare;
+    private EndSquareDataDump dataDump;
     public Image FadeCanvas;
-    public string nextScene;
+    private string nextScene;
     private float time;
     private int opacity;
     private bool end = false;
@@ -17,8 +20,9 @@ public class SceneChange : MonoBehaviour {
     private float speed;
 	// Use this for initialization
 	void Start () {
-        //player = GameObject.Find("Player");
+        player = GameObject.Find("Player");
         //playerMovement = player.GetComponent<PlayerMovement>();
+        playerKey = player.GetComponent<PlayerKey>();
     }
 	
 	// Update is called once per frame
@@ -32,8 +36,11 @@ public class SceneChange : MonoBehaviour {
             if (time >= fadeTime)
             {
                 end = false;
+                EndSquare = GameObject.Find("InvisibleEndSquare");
+                dataDump = EndSquare.GetComponent <EndSquareDataDump>();
                 //playerMovement.speed = speed;
-                SceneManager.LoadScene(nextScene);
+                if (playerKey.l_orb && playerKey.m_orb && playerKey.r_orb && (dataDump.HappyChange!="")) { SceneManager.LoadScene(dataDump.HappyChange); }
+                else { SceneManager.LoadScene(dataDump.SceneChange); }
                 begin = true;
                 transform.position = new Vector3 (0, 0, 0);
             }
