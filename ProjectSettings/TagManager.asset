@@ -8,6 +8,7 @@ TagManager:
   - Distraction
   - Collect
   - Key
+  - Exit
   layers:
   - Default
   - TransparentFX

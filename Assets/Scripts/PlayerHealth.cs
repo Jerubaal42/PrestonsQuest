@@ -40,7 +40,7 @@ public class PlayerHealth : MonoBehaviour {
         {
             DontDestroyOnLoad(gameObject);
             created = true;
-        }
+        } else { Destroy(gameObject); }
     }
     // Update is called once per frame
     void Update () {
@@ -50,7 +50,7 @@ public class PlayerHealth : MonoBehaviour {
             time2 += Time.deltaTime;
             if (time2 >= gameOverTime)
             {
-                SceneManager.LoadScene("Scene1");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 playerMovement.speed = speed;
                 invulnerable = false;
                 health = 3;
