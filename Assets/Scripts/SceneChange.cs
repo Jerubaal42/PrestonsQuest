@@ -44,7 +44,12 @@ public class SceneChange : MonoBehaviour {
                 music = Camera.main.GetComponent<AudioSource>();
                 music.clip = dataDump.MusicChange;
                 music.Play();
-                if (playerKey.l_orb && playerKey.m_orb && playerKey.r_orb && (dataDump.HappyChange != "")) { SceneManager.LoadScene(dataDump.HappyChange); }
+                if (playerKey.l_orb && playerKey.m_orb && playerKey.r_orb && (dataDump.HappyChange != ""))
+                {
+                    SceneManager.LoadScene(dataDump.HappyChange);
+                    music.clip = dataDump.HappyMusic;
+                    music.Play();
+                }
                 else if (menu == true) { SceneManager.LoadScene(SceneManager.GetActiveScene().name); menu = false; }
                 else { SceneManager.LoadScene(dataDump.SceneChange); }
                 begin = true;

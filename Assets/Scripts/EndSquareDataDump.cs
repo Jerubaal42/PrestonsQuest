@@ -6,6 +6,7 @@ public class EndSquareDataDump : MonoBehaviour {
     public string SceneChange;
     public string HappyChange = "";
     public AudioClip MusicChange;
+    public AudioClip HappyMusic;
 	// Use this for initialization
 	void Start () {
 		
