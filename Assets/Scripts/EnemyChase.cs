@@ -95,7 +95,7 @@ public class EnemyChase : MonoBehaviour {
         {
             Vector3 playerPosition = player.transform.position;
             Vector2 chaseDirection = new Vector2(playerPosition.x - transform.position.x, playerPosition.y - transform.position.y);
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, chaseDirection, 10f);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, chaseDirection, chaseTriggerDistance);
             if (hit.collider.name == "Player")
             {
                 chaseDirection.Normalize();
