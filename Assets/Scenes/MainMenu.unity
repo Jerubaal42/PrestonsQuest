@@ -303,6 +303,11 @@ Prefab:
       propertyPath: SceneChange
       value: Stage-1 (Upstairs)
       objectReference: {fileID: 0}
+    - target: {fileID: 114980348009460388, guid: 03a41ecebe6dcf845bab8666ac28003a,
+        type: 2}
+      propertyPath: MusicChange
+      value: 
+      objectReference: {fileID: 8300000, guid: a30683cd00271bd4b9d8b91d05aed3a3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03a41ecebe6dcf845bab8666ac28003a, type: 2}
   m_IsPrefabAsset: 0
@@ -3591,10 +3596,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e47c9342ececf7146ae68e0da38c5313, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2b04a32c8397409459070f70f45aedc1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 0.3
+  m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0

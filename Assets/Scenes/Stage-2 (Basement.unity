@@ -705,6 +705,11 @@ Prefab:
       propertyPath: SceneChange
       value: Stage-3
       objectReference: {fileID: 0}
+    - target: {fileID: 114980348009460388, guid: 03a41ecebe6dcf845bab8666ac28003a,
+        type: 2}
+      propertyPath: MusicChange
+      value: 
+      objectReference: {fileID: 8300000, guid: cc03afec84f33f6438a356b3bc604580, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03a41ecebe6dcf845bab8666ac28003a, type: 2}
   m_IsPrefabAsset: 0
@@ -1332,7 +1337,7 @@ Transform:
   m_LocalScale: {x: 3.8359, y: 20.403889, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1789463533
 Prefab:
@@ -12338,7 +12343,7 @@ Transform:
   m_LocalScale: {x: 3.8359, y: 20.766699, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2084047066
 Prefab:
