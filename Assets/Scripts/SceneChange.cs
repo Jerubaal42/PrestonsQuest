@@ -14,9 +14,11 @@ public class SceneChange : MonoBehaviour {
     private string nextScene;
     private float time;
     private int opacity;
-    private bool end = false;
+    public bool end = false;
     private bool begin = true;
+    private AudioSource music;
     public float fadeTime;
+    public bool menu = false;
     private float speed;
 	// Use this for initialization
 	void Start () {
@@ -39,7 +41,11 @@ public class SceneChange : MonoBehaviour {
                 EndSquare = GameObject.Find("InvisibleEndSquare");
                 dataDump = EndSquare.GetComponent <EndSquareDataDump>();
                 //playerMovement.speed = speed;
-                if (playerKey.l_orb && playerKey.m_orb && playerKey.r_orb && (dataDump.HappyChange!="")) { SceneManager.LoadScene(dataDump.HappyChange); }
+                music = Camera.main.GetComponent<AudioSource>();
+                music.clip = dataDump.MusicChange;
+                music.Play();
+                if (playerKey.l_orb && playerKey.m_orb && playerKey.r_orb && (dataDump.HappyChange != "")) { SceneManager.LoadScene(dataDump.HappyChange); }
+                else if (menu == true) { SceneManager.LoadScene(SceneManager.GetActiveScene().name); menu = false; }
                 else { SceneManager.LoadScene(dataDump.SceneChange); }
                 begin = true;
                 transform.position = new Vector3 (0, 0, 0);

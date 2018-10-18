@@ -5,6 +5,7 @@ using UnityEngine;
 public class EndSquareDataDump : MonoBehaviour {
     public string SceneChange;
     public string HappyChange = "";
+    public AudioClip MusicChange;
 	// Use this for initialization
 	void Start () {
 		

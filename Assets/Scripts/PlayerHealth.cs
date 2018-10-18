@@ -25,6 +25,7 @@ public class PlayerHealth : MonoBehaviour {
     private static bool created = false;
     private GameObject player;
     private PlayerMovement playerMovement;
+    public Image fadeCanvas;
 	// Use this for initialization
 	void Start () {
         player = GameObject.Find("Player");
@@ -48,9 +49,13 @@ public class PlayerHealth : MonoBehaviour {
         {
             playerMovement.speed = 0;
             time2 += Time.deltaTime;
+            var tempColor = fadeCanvas.color;
+            tempColor.a = time * (1 / gameOverTime);
+            fadeCanvas.color = tempColor;
             if (time2 >= gameOverTime)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                transform.position = new Vector3(0, 0, 0);
                 playerMovement.speed = speed;
                 invulnerable = false;
                 health = 3;

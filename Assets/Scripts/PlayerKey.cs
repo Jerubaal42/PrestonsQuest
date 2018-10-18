@@ -82,7 +82,7 @@ public class PlayerKey : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Key")
         {
-            if(collision.gameObject.name == "Key") { key = true; images[0].sprite = sprites[0]; Destroy(collision.gameObject); }
+            if (collision.gameObject.name == "Key" && key == false) { key = true; images[0].sprite = sprites[0]; Destroy(collision.gameObject); }
             if(collision.gameObject.name == "Knife") { knife = true; images[1].sprite = sprites[1]; Destroy(collision.gameObject); }
             if (collision.gameObject.name == "Hammer") { hammer = true; images[2].sprite = sprites[2]; Destroy(collision.gameObject); }
             if (collision.gameObject.name == "Eye") { eye = true; images[3].sprite = sprites[3]; Destroy(collision.gameObject); }

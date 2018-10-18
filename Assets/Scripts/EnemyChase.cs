@@ -29,7 +29,7 @@ public class EnemyChase : MonoBehaviour {
     public float[] waypointPause;
     private bool destArrive = false;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         animator = GetComponent<Animator>();
         destination = new Vector2(x_waypoint[0], y_waypoint[0]);
         waypointMax = x_waypoint.Length - 1;
